@@ -22,7 +22,7 @@ class diamond(Checks):
 		correct = File("monkey.txt").read()
 		check_diamond(out,correct)
 		
-	@check("compiles")
+#	@check("compiles")
 #	def test23(self):
 #		"""handles a height of 23 correctly"""
 #		out = self.spawn("./mario").stdin("23").stdout()
