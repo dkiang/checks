@@ -17,4 +17,4 @@ class hello(Checks):
 	@check("compiles")
 	def test1(self):
 		"""Checks output"""
-		self.spawn("./hello").stdin("Douglas").stdout("Hello Douglas\n", "Hello Douglas\n").exit(0)
+		self.spawn("./hello").stdin("Douglas").stdout("^Hello Douglas\n", "Hello Douglas\n").exit(0)
