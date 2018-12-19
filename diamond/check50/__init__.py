@@ -18,7 +18,7 @@ class diamond(Checks):
 	@check("compiles")
 	def test_monkey(self):
 		"""input of MONKEY yields output"""
-		out = self.spawn("./diamond").stdin("MONKEY").stdout()
+		out = self.spawn("./diamond MONKEY").stdout()
 		correct = File("monkey.txt").read()
 		check_diamond(out,correct)
 		

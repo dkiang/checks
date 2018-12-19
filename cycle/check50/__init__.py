@@ -16,4 +16,4 @@ class cycle(Checks):
 	@check("compiles")
 	def test1(self):
 		"""identifies numbers greater than 31"""
-		self.spawn("./cycle").stdin("30 3 B").stdout("B C S S D E F A B S S C D E F A S S B C D E F S S A B C D E \n", "B C S S D E F A B S S C D E F A S S B C D E F S S A B C D E \n").exit(0)
+		self.spawn("./cycle 30 3 B").stdout("B C S S D E F A B S S C D E F A S S B C D E F S S A B C D E \n", "B C S S D E F A B S S C D E F A S S B C D E F S S A B C D E \n").exit(0)
