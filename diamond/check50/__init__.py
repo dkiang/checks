@@ -23,12 +23,12 @@ class diamond(Checks):
 		check_diamond(out,correct)
 		
 		
-	@check("compiles")
-	def test23(self):
-		"""handles a height of 23 correctly"""
-		out = self.spawn("./mario").stdin("23").stdout()
-		correct = File("23.txt").read()
-		check_pyramid(out, correct)
+#	@check("compiles")
+#	def test23(self):
+#		"""handles a height of 23 correctly"""
+#		out = self.spawn("./mario").stdin("23").stdout()
+#		correct = File("23.txt").read()
+#		check_pyramid(out, correct)
 		
 #	@check("compiles")
 #	def test23(self):
