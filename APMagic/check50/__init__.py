@@ -16,4 +16,4 @@ class APMagic(Checks):
 	@check("compiles")
 	def test1(self):
 		"""Checks non-improving scores"""
-		self.spawn("./APMagic 50 50 20 80 5").stdin().stdout("Magic Off: 50.6\n", "Magic Off: 50.6\n").exit(0)
+		self.spawn("./APMagic 50 50 20 80 5").stdout("Magic Off: 50.6\n", "Magic Off: 50.6\n").exit(0)
