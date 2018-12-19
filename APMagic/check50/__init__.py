@@ -32,4 +32,7 @@ class APMagic(Checks):
 	def test4(self):
 				"""Checks non-improving scores"""
 				self.spawn("./APMagic 1 2 3 4 5 6 8 7").stdout("Magic Off: 4.5\n", "Magic Off: 4.5\n").exit(0)
-		
+	
+	
+	
+	

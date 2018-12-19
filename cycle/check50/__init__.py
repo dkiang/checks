@@ -32,3 +32,8 @@ class cycle(Checks):
 	def test4(self):
 			"""identifies weeks where Saturday is the 7th day"""
 			self.spawn("./cycle 31 7 B").stdout("S B C D E F S S A B C D E S S F A B C D S S E F A B C S S D E \n", "S B C D E F S S A B C D E S S F A B C D S S E F A B C S S D E \n").exit(0)
+	
+	@check("compiles")
+	def test5(self):
+			"""identifies weeks where Saturday is the 6th day"""
+			self.spawn("./cycle 31 6 B").stdout("B C D E F S S A B C D E S S F A B C D S S E F A B C S S D E F \n", "B C D E F S S A B C D E S S F A B C D S S E F A B C S S D E F \n").exit(0)
