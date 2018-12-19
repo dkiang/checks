@@ -17,15 +17,18 @@ class APMagic(Checks):
 	def test1(self):
 		"""Checks non-improving scores"""
 		self.spawn("./APMagic 50 50 20 80 53").stdout("Magic Off: 50.6\n", "Magic Off: 50.6\n").exit(0)
-	
+		
+	@check("compiles")
 	def test2(self):
 			"""Checks improving scores"""
 			self.spawn("./APMagic 20 50 50 80").stdout("Magic On: 65.0\n", "Magic On: 65.0\n").exit(0)
-			
+	
+	@check("compiles")
 	def test3(self):
 			"""Checks improving scores"""
 			self.spawn("./APMagic 1 2 3 4 5 6 7 8").stdout("Magic On: 6.5\n", "Magic On: 6.5\n").exit(0)
-			
+	
+	@check("compiles")		
 	def test4(self):
 				"""Checks non-improving scores"""
 				self.spawn("./APMagic 1 2 3 4 5 6 8 7").stdout("Magic Off: 6.5\n", "Magic Off: 4.5\n").exit(0)
