@@ -1,13 +1,1 @@
-*
-!static/style.css
-!application.py
-!static/style.css
-!templates/index.html
-!templates/oops.html
-!templates/cross.html
-#static/style.css
-#application.py
-#static/style.css
-#templates/index.html
-#templates/oops.html
-#templates/cross.html
+!*
