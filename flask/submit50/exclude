@@ -1,6 +1,7 @@
 !*
 #application.py
 #static/style.css
+#templates/layout.html
 #templates/index.html
 #templates/oops.html
 #templates/cross.html
