@@ -1,5 +1,4 @@
 !*
-#static/style.css
 #application.py
 #static/style.css
 #templates/index.html
