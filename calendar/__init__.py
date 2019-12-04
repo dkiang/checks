@@ -6,15 +6,15 @@ def exists():
 	"""calendar.c exists."""
 	check50.exists("calendar.c")
 
-@check50.check(exists)
-def compiles():
-	"""calendar.c compiles."""
-	check50.c.compile("calendar.c", lcs50=True)
+#@check50.check(exists)
+#def compiles():
+#	"""calendar.c compiles."""
+#	check50.c.compile("calendar.c", lcs50=True)
 
-@check50.check("compiles")
-def midweek_greater_28():
-		"""identifies months starting midweek that are greater than 28 """
-		check50.run("./calendar 1 29").stdout("      1  2  3  4  5\n", " 6  7  8  9 10 11 12\n", "13 14 15 16 17 18 19\n", "20 21 22 23 24 25 26\n", "27 28 29 30 31").exit(0)
+#@check50.check("compiles")
+#def midweek_greater_28():
+#		"""identifies months starting midweek that are greater than 28 """
+#		check50.run("./calendar 1 29").stdout("      1  2  3  4  5\n", " 6  7  8  9 10 11 12\n", "13 14 15 16 17 18 19\n", "20 21 22 23 24 25 26\n", "27 28 29 30 31").exit(0)
 	
 #	@check("compiles")
 #	def test2(self):
