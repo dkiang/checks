@@ -1,7 +1,7 @@
   check50:
     checks:
       multiline months greater than 28:
-      - run: ./calendar 1 29
+      - run: ./calendar
       stdout: blah
       exit: 0
       
