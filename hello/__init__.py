@@ -1,20 +1,17 @@
-#!/usr/bin/python
+import check50
+import check50.c
 
-from check50 import *
-
-class hello(Checks):
-
-	@check()
-	def exists(self):
-		"""hello.c exists."""
-		self.require("hello.c")
+@check50.check()
+def exists():
+	"""hello.c exists."""
+	check50.exists("hello.c")
 
 	@check("exists")
 	def compiles(self):
 		"""hello.c compiles."""
-		self.spawn("clang -std=c11 -o hello hello.c -lcs50 -lm").exit(0)
+		check50.c.compile("./hello", lcs50=True)
 
 	@check("compiles")
-	def test1(self):
+	def test1():
 		"""Checks output"""
-		self.spawn("./hello").stdin("Douglas").stdout("Hello Douglas\n", "Hello Douglas\n").exit(0)
+		check50.c.run("./hello").stdin("Douglas").stdout("Hello Douglas\n", "Hello Douglas\n").exit(0)
