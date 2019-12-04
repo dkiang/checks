@@ -15,3 +15,4 @@ def exists():
 	def test1():
 		"""Checks output"""
 		check50.c.run("./hello").stdin("Douglas").stdout("Hello Douglas\n", "Hello Douglas\n").exit(0)
+		
