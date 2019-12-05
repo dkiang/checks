@@ -5,40 +5,40 @@ check50:
         stdin:
           - east
           - star
-        stdout: 2
+        stdout: east star: 2
         exit: 0
     spam pam 3:
       - run: ./wordlinks
         stdin:
           - spam
           - pam
-        stdout: 3
+        stdout: spam pam: 3
         exit: 0
     a ant 1:
       - run: ./wordlinks
         stdin:
           - a
           - ant
-        stdout: 1
+        stdout: a ant: 1
         exit: 0
     alpha a 1:
       - run: ./wordlinks
         stdin:
           - alpha
           - a
-        stdout: 1
+        stdout: alpha a: 1
         exit: 0
     spike pike 4:
       - run: ./wordlinks
         stdin:
           - spike
           - pike
-        stdout: 4
+        stdout: spike pike: 4
         exit: 0
     venus mars 0:
       - run: ./wordlinks
         stdin:
           - venus
           - mars
-        stdout: 0
+        stdout: venus mars: 0
         exit: 0        
