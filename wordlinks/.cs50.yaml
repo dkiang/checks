@@ -42,11 +42,11 @@ check50:
           - mars
         stdout: venus mars 0
         exit: 0
-    aabca abcad (Noah's test) 4:
-      - run: ./wordlinks
-        stdin:
-          - aabca
-          - abcad
-        stdout: aabca abcad 4
-        exit: 0
-        
+#    aabca abcad (Noah's test) 4:
+#      - run: ./wordlinks
+#        stdin:
+#          - aabca
+#          - abcad
+#        stdout: aabca abcad 4
+#        exit: 0
+#        
