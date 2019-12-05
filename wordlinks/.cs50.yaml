@@ -1,0 +1,44 @@
+check50:
+  checks:
+    east star:
+      - run: ./wordlinks
+        stdin:
+          - east
+          - star
+        stdout: 2
+        exit: 0
+    spam pam:
+      - run: ./wordlinks
+        stdin:
+          - spam
+          - pam
+        stdout: 3
+        exit: 0
+    a ant:
+      - run: ./wordlinks
+        stdin:
+          - a
+          - ant
+        stdout: 1
+        exit: 0
+    alpha a:
+      - run: ./wordlinks
+        stdin:
+          - alpha
+          - a
+        stdout: 1
+        exit: 0
+    spike pike:
+      - run: ./wordlinks
+        stdin:
+          - spike
+          - pike
+        stdout: 4
+        exit: 0
+    venus mars:
+      - run: ./wordlinks
+        stdin:
+          - venus
+          - mars
+        stdout: 0
+        exit: 0        
