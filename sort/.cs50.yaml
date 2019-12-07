@@ -1,0 +1,18 @@
+check50:
+	checks:
+		sort random order:
+			- run: ./sort 5 9 3 6 7 1 0 2 8 4
+				stdout: 0 1 2 3 4 5 6 7 8 9
+				exit: 0
+		sort reversed order:
+			- run: ./sort 9 8 7 6 5 4 3 2 1 0
+				stdout: 0 1 2 3 4 5 6 7 8 9
+				exit: 0
+		sort already sorted:
+			- run: ./sort 0 1 2 3 4 5 6 7 8 9
+				stdout: 0 1 2 3 4 5 6 7 8 9
+				exit: 0
+		sort duplicate values:
+			- run: ./sort 3 6 2 2 8 6 6 0 0 2
+				stdout: 0 0 2 2 2 3 6 6 6 8
+				exit: 0
