@@ -42,4 +42,11 @@ check50:
           - mars
         stdout: venus mars 0
         exit: 0
+    hoop open 2:
+      - run: ./wordlinks
+        stdin:
+          - hoop
+          - open
+        stdout: hoop open 2
+        exit: 0
         
