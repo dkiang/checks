@@ -42,3 +42,4 @@ check50:
           - mars
         stdout: venus mars 0
         exit: 0
+        
