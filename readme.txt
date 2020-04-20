@@ -1,5 +1,7 @@
 There needs to be .cs50.yml file at the root level of the problem set directory. Here is an example of the cash yml and init.py file.
 
+Don't use tabs. Must use 2 or 4 spaces.
+
 The .cs50.yml file is here:
 check50: 
   files: &check50_files
