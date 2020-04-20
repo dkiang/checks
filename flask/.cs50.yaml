@@ -1,6 +1,7 @@
 check50: 
-  files: 
-	- !require application.py
+	files: &check50_files
+		- !exclude "*"
+		- !require application.py
 
 submit50:
-  files: application.py
+	files: *check50_files
