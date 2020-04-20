@@ -1,6 +1,8 @@
 There needs to be .cs50.yml file at the root level of the problem set directory. Here is an example of the cash yml and init.py file.
 
-Don't use tabs. Must use 2 or 4 spaces.
+Don't use tabs. Must use 2 or 4 spaces. When checking for multiple files it appears you need to set up individual tests.
+
+submit50 dkiang/checks/master/flask
 
 The .cs50.yml file is here:
 check50: 
