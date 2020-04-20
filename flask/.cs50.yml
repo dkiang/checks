@@ -3,6 +3,10 @@ check50:
     - !exclude "*"
     - !require application.py
     - !require static/style.css
+    - !require templates/index.html
+    - !require templates/layout.html
+    - !require templates/oops.html
+    - !require templates/cross.html
 
 
 submit50:
