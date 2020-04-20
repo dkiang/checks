@@ -1,12 +1,6 @@
 check50: 
-  files: &check50_files
-	- !exclude "*"
+  files: 
 	- !require application.py
-	- !require static/style.css
-	- !require templates/layout.html
-	- !require templates/index.html
-	- !require templates/oops.html
-	- !require templates/cross.html	
 
 submit50:
-  files: *check50_files
+  files: application.py
