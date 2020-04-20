@@ -1,6 +1,6 @@
-There needs to be .cs50.yaml file at the root level of the problem set directory. Here is an example of the cash yaml and init.py file.
+There needs to be .cs50.yml file at the root level of the problem set directory. Here is an example of the cash yml and init.py file.
 
-The .cs50.yaml file is here:
+The .cs50.yml file is here:
 check50: 
   files: &check50_files
     - !exclude "*"
