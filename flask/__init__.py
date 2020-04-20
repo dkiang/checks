@@ -1,19 +1,17 @@
-from check50 import *
+import check50
+import check50.c
 
-
-class flask(Checks):
-
-	@check()
-	def exists(self):
-		"""application.py exists."""
-		self.require("application.py")
-		"""style.css exists."""
-		self.require("static/style.css")
-		"""layout.html exists."""
-		self.require("templates/layout.html")
-		"""index.html exists."""
-		self.require("templates/index.html")
-		"""oops.html exists."""
-		self.require("templates/oops.html")
-		"""cross.html exists."""
-		self.require("templates/cross.html")
+@check50.check()
+def exists():
+	"""application.py exists."""
+	check50.exists("application.py")
+	"""style.css exists."""
+	check50.exists("static/style.css")
+	"""layout.html exists."""
+	check50.exists("templates/layout.html")
+	"""index.html exists."""
+	check50.exists("templates/index.html")
+	"""oops.html exists."""
+	check50.exists("templates/oops.html")
+	"""cross.html exists."""
+	check50.exists("templates/cross.html")
