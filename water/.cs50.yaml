@@ -1,12 +1,6 @@
 check50:
   checks:
   
-    Handles negative values:
-    - run: ./water
-      stdin: -1
-      stdout: Retry:
-      exit: 0
-      
     One minute is 12 bottles:
     - run: ./water
       stdin: 1
