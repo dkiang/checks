@@ -5,11 +5,13 @@ check50:
       stdin: 1
       stdout: 12
       exit: 0
+      
     5 minutes = 60 bottles:
     - run: ./water
       stdin: 5
       stdout: 60
       exit: 0
+      
     10 minutes = 120 bottles:
     - run: ./water
       stdin: 10
