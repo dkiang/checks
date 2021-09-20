@@ -1,7 +1,17 @@
 check50:
   checks:
-    test_1:
+    1 minute = 12 bottles:
     - run: ./water
       stdin: 1
       stdout: 12
+      exit: 0
+    5 minutes = 60 bottles:
+    - run: ./water
+      stdin: 5
+      stdout: 60
+      exit: 0
+    10 minutes = 120 bottles:
+    - run: ./water
+      stdin: 10
+      stdout: 120
       exit: 0
