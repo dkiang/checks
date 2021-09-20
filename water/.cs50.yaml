@@ -1,7 +1,7 @@
 check50:
-	checks:
-		test_1:
-			- run: ./water
-			  stdin: 1
-			  stdout: 12
-			  exit: 0
+  checks:
+    test_1:
+    - run: ./water
+      stdin: 1
+      stdout: 12
+      exit: 0
