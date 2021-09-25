@@ -1,6 +1,6 @@
 check50:
   checks:
-  
+      
     One minute is 12 bottles:
     - run: ./water
       stdin: 1
