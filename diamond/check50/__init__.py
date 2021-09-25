@@ -1,115 +1,130 @@
-#!/usr/bin/python
+import re
+import check50
+import check50.c
 
-from check50 import *
+@check50.check()
+def exists():
+    """diamond.c exists"""
+    check50.exists("diamond.c")
 
-class diamond(Checks):
+@check50.check(exists)
+def compiles():
+    """diamond.c compiles."""
+    check50.c.compile("diamond.c", lcs50=True)
 
-	@check()
-	def exists(self):
-		"""diamond.c exists"""
-		self.require("diamond.c")
-		self.add("monkey.txt")
+@check50.check(compiles)
+def prompts_user():
+    """prompts user properly"""
+    check50.run("./diamond").stdout("Size: ")
 
-	@check("exists")
-	def compiles(self):
-		"""diamond.c compiles"""
-		self.spawn("clang -o diamond diamond.c -lcs50 -lm").exit(0)
+@check50.check(prompts_user)
+def low_value():
+    """rejects low value"""
+    check50.run("./diamond").stdin("0").stdout("Size: ")
 
-	@check("compiles")
-	def test_monkey(self):
-		"""input of MONKEY yields output"""
-		out = self.spawn("./diamond MONKEY").stdout()
-		correct = File("monkey.txt").read()
-		check_diamond(out,correct)
-		
-		
-#	@check("compiles")
-#	def test23(self):
-#		"""handles a height of 23 correctly"""
-#		out = self.spawn("./mario").stdin("23").stdout()
-#		correct = File("23.txt").read()
-#		check_pyramid(out, correct)
-		
-#	@check("compiles")
-#	def test23(self):
-#		"""handles a height of 23 correctly"""
-#		out = self.spawn("./mario").stdin("23").stdout()
-#		correct = File("23.txt").read()
-#		check_pyramid(out, correct)
+@check50.check(low_value)
+def high_value():
+    """rejects high value"""
+    check50.run("./diamond").stdin("21").stdout("Size: ")
 
-#class MarioLess(Checks):
-#
-#
-#	@check()
-#	def exists(self):
-#		"""mario.c exists."""
-#		self.require("mario.c")
-#		self.add("1.txt", "2.txt", "23.txt")
-#
-#	@check("exists")
-#	def compiles(self):
-#		"""mario.c compiles."""
-#		self.spawn("clang -std=c11 -o mario mario.c -lcs50 -lm").exit(0)
-#
-#	@check("compiles")
-#	def test_reject_negative(self):
-#		"""rejects a height of -1"""
-#		self.spawn("./mario").stdin("-1").reject()
-#
-#	@check("compiles")
-#	def test0(self):
-#		"""handles a height of 0 correctly"""
-#		self.spawn("./mario").stdin("0").stdout(EOF).exit(0)
-#
-#	@check("compiles")
-#	def test1(self):
-#		"""handles a height of 1 correctly"""
-#		out = self.spawn("./mario").stdin("1").stdout()
-#		correct = File("1.txt").read()
-#		check_pyramid(out, correct)
-#
-#	@check("compiles")
-#	def test2(self):
-#		"""handles a height of 2 correctly"""
-#		out = self.spawn("./mario").stdin("2").stdout()
-#		correct = File("2.txt").read()
-#		check_pyramid(out, correct)
-#
-#	@check("compiles")
-#	def test23(self):
-#		"""handles a height of 23 correctly"""
-#		out = self.spawn("./mario").stdin("23").stdout()
-#		correct = File("23.txt").read()
-#		check_pyramid(out, correct)
-#
-#	@check("compiles")
-#	def test24(self):
-#		"""rejects a height of 24, and then accepts a height of 2"""
-#		self.spawn("./mario").stdin("24").reject()\
-#			.stdin("2").stdout(File("2.txt")).exit(0)
-#
-#	@check("compiles")
-#	def test_reject_foo(self):
-#		"""rejects a non-numeric height of "foo" """
-#		self.spawn("./mario").stdin("foo").reject()
-#
-#	@check("compiles")
-#	def test_reject_empty(self):
-#		"""rejects a non-numeric height of "" """
-#		self.spawn("./mario").stdin("").reject()
+@check50.check(high_value)
+def one():
+    """1 row diamond"""
+    print("*")
+    print("\*")
+    check50.run("./diamond").stdin("1").stdout("\*")
 
+@check50.check(one)
+def two():
+    """2 row diamond"""
+    check50.run("./diamond").stdin("2").stdout("\*\n\*")
 
-def check_diamond(output, correct):
-	if output == correct:
-		return
+@check50.check(two)
+def three():
+    """3 row diamond"""
+    check50.run("./diamond").stdin("3").stdout(" \*\n\* \*\n \*")
 
-	output = output.split("\n")
-	correct = correct.split("\n")
+@check50.check(three)
+def four():
+    """4 row diamond"""
+    check50.run("./diamond").stdin("4").stdout(" \*\n\* \*\n\* \*\n \*")
 
-	err = Error(Mismatch(correct, output))
-	# check if diamonds are the same height and only differ by trailing whitespace
-	if len(output) == len(correct) and all(ol.rstrip() == cl for ol, cl in zip(output, correct)):
-		err.helpers = "Did you add too much trailing whitespace to the end of your diamond?"
-	elif len(output) == len(correct) and all(ol[1:] == cl for ol, cl in zip(output, correct)):
-		err.helpers = "Are you printing an additional character at the beginning of each line?"
-	raise err
+@check50.check(four)
+def five():
+    """5 row diamond"""
+    check50.run("./diamond").stdin("5").stdout("  \*\n \* \*\n\* \* \*\n \* \*\n  \*")
+
+@check50.check(five)
+def six():
+    """6 row diamond"""
+    check50.run("./diamond").stdin("6").stdout("  \*\n \* \*\n\* \* \*\n\* \* \*\n \* \*\n  \*")
+
+@check50.check(six)
+def seven():
+    """7 row diamond"""
+    check50.run("./diamond").stdin("7").stdout("   \*\n  \* \*\n \* \* \*\n\* \* \* \*\n \* \* \*\n  \* \*\n   \*")
+
+@check50.check(seven)
+def eight():
+    """8 row diamond"""
+    check50.run("./diamond").stdin("8").stdout("   \*\n  \* \*\n \* \* \*\n\* \* \* \*\n\* \* \* \*\n \* \* \*\n  \* \*\n   \*")
+
+@check50.check(eight)
+def nine():
+    """9 row diamond"""
+    check50.run("./diamond").stdin("9").stdout("    \*\n   \* \*\n  \* \* \*\n \* \* \* \*\n\* \* \* \* \*\n \* \* \* \*\n  \* \* \*\n   \* \*\n    \*")
+
+@check50.check(nine)
+def ten():
+    """10 row diamond"""
+    check50.run("./diamond").stdin("10").stdout("    \*\n   \* \*\n  \* \* \*\n \* \* \* \*\n\* \* \* \* \*\n\* \* \* \* \*\n \* \* \* \*\n  \* \* \*\n   \* \*\n    \*")
+
+@check50.check(ten)
+def eleven():
+    """11 row diamond"""
+    check50.run("./diamond").stdin("11").stdout("     \*\n    \* \*\n   \* \* \*\n  \* \* \* \*\n \* \* \* \* \*\n\* \* \* \* \* \*\n \* \* \* \* \*\n  \* \* \* \*\n   \* \* \*\n    \* \*\n     \*")
+
+@check50.check(eleven)
+def twelve():
+    """12 row diamond"""
+    check50.run("./diamond").stdin("12").stdout("     \*\n    \* \*\n   \* \* \*\n  \* \* \* \*\n \* \* \* \* \*\n\* \* \* \* \* \*\n\* \* \* \* \* \*\n \* \* \* \* \*\n  \* \* \* \*\n   \* \* \*\n    \* \*\n     \*")
+
+@check50.check(twelve)
+def thirteen():
+    """13 row diamond"""
+    check50.run("./diamond").stdin("13").stdout("      \*\n     \* \*\n    \* \* \*\n   \* \* \* \*\n  \* \* \* \* \*\n \* \* \* \* \* \*\n\* \* \* \* \* \* \*\n \* \* \* \* \* \*\n  \* \* \* \* \*\n   \* \* \* \*\n    \* \* \*\n     \* \*\n      \*")
+
+@check50.check(thirteen)
+def fourteen():
+    """14 row diamond"""
+    check50.run("./diamond").stdin("14").stdout("      \*\n     \* \*\n    \* \* \*\n   \* \* \* \*\n  \* \* \* \* \*\n \* \* \* \* \* \*\n\* \* \* \* \* \* \*\n\* \* \* \* \* \* \*\n \* \* \* \* \* \*\n  \* \* \* \* \*\n   \* \* \* \*\n    \* \* \*\n     \* \*\n      \*")
+
+@check50.check(fourteen)
+def fifteen():
+    """15 row diamond"""
+    check50.run("./diamond").stdin("15").stdout("       \*\n      \* \*\n     \* \* \*\n    \* \* \* \*\n   \* \* \* \* \*\n  \* \* \* \* \* \*\n \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \*\n \* \* \* \* \* \* \*\n  \* \* \* \* \* \*\n   \* \* \* \* \*\n    \* \* \* \*\n     \* \* \*\n      \* \*\n       \*")
+
+@check50.check(fifteen)
+def sixteen():
+    """16 row diamond"""
+    check50.run("./diamond").stdin("16").stdout("       \*\n      \* \*\n     \* \* \*\n    \* \* \* \*\n   \* \* \* \* \*\n  \* \* \* \* \* \*\n \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \*\n \* \* \* \* \* \* \*\n  \* \* \* \* \* \*\n   \* \* \* \* \*\n    \* \* \* \*\n     \* \* \*\n      \* \*\n       \*")
+
+@check50.check(sixteen)
+def seventeen():
+    """17 row diamond"""
+    check50.run("./diamond").stdin("17").stdout("        \*\n       \* \*\n      \* \* \*\n     \* \* \* \*\n    \* \* \* \* \*\n   \* \* \* \* \* \*\n  \* \* \* \* \* \* \*\n \* \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \* \*\n \* \* \* \* \* \* \* \*\n  \* \* \* \* \* \* \*\n   \* \* \* \* \* \*\n    \* \* \* \* \*\n     \* \* \* \*\n      \* \* \*\n       \* \*\n        \*")
+
+@check50.check(seventeen)
+def eighteen():
+    """18 row diamond"""
+    check50.run("./diamond").stdin("18").stdout("        \*\n       \* \*\n      \* \* \*\n     \* \* \* \*\n    \* \* \* \* \*\n   \* \* \* \* \* \*\n  \* \* \* \* \* \* \*\n \* \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \* \*\n \* \* \* \* \* \* \* \*\n  \* \* \* \* \* \* \*\n   \* \* \* \* \* \*\n    \* \* \* \* \*\n     \* \* \* \*\n      \* \* \*\n       \* \*\n        \*")
+
+@check50.check(eighteen)
+def nineteen():
+    """19 row diamond"""
+    check50.run("./diamond").stdin("19").stdout("         \*\n        \* \*\n       \* \* \*\n      \* \* \* \*\n     \* \* \* \* \*\n    \* \* \* \* \* \*\n   \* \* \* \* \* \* \*\n  \* \* \* \* \* \* \* \*\n \* \* \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \* \* \*\n \* \* \* \* \* \* \* \* \*\n  \* \* \* \* \* \* \* \*\n   \* \* \* \* \* \* \*\n    \* \* \* \* \* \*\n     \* \* \* \* \*\n      \* \* \* \*\n       \* \* \*\n        \* \*\n         \*")
+
+@check50.check(nineteen)
+def twenty():
+    """20 row diamond"""
+    check50.run("./diamond").stdin("20").stdout("         \*\n        \* \*\n       \* \* \*\n      \* \* \* \*\n     \* \* \* \* \*\n    \* \* \* \* \* \*\n   \* \* \* \* \* \* \*\n  \* \* \* \* \* \* \* \*\n \* \* \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \* \* \*\n \* \* \* \* \* \* \* \* \*\n  \* \* \* \* \* \* \* \*\n   \* \* \* \* \* \* \*\n    \* \* \* \* \* \*\n     \* \* \* \* \*\n      \* \* \* \*\n       \* \* \*\n        \* \*\n         \*")
