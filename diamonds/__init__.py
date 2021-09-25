@@ -15,17 +15,17 @@ def compiles():
 @check50.check(compiles)
 def prompts_user():
     """prompts user properly"""
-    check50.run("./diamonds").stdout("size: ")
+    check50.run("./diamonds").stdout("size? ")
 
 @check50.check(prompts_user)
 def low_value():
     """rejects low value"""
-    check50.run("./diamonds").stdin("0").stdout("size: ")
+    check50.run("./diamonds").stdin("0").stdout("size? ")
 
 @check50.check(low_value)
 def high_value():
     """rejects high value"""
-    check50.run("./diamonds").stdin("21").stdout("size: ")
+    check50.run("./diamonds").stdin("21").stdout("size? ")
 
 @check50.check(high_value)
 def one():
