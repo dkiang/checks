@@ -7,33 +7,33 @@ def exists():
     """diamond.c exists"""
     check50.exists("diamonds.c")
 
-#@check50.check(exists)
-#def compiles():
-#    """diamond.c compiles."""
-#    check50.c.compile("diamonds.c", lcs50=True)
-#
-#@check50.check(compiles)
-#def prompts_user():
-#    """prompts user properly"""
-#    check50.run("./diamonds").stdout("Size: ")
-#
-#@check50.check(prompts_user)
-#def low_value():
-#    """rejects low value"""
-#    check50.run("./diamonds").stdin("0").stdout("Size: ")
-#
-#@check50.check(low_value)
-#def high_value():
-#    """rejects high value"""
-#    check50.run("./diamonds").stdin("21").stdout("Size: ")
-#
-#@check50.check(high_value)
-#def one():
-#    """1 row diamond"""
-#    print("*")
-#    print("\*")
-#    check50.run("./diamonds").stdin("1").stdout("\*")
-#
+@check50.check(exists)
+def compiles():
+    """diamond.c compiles."""
+    check50.c.compile("diamonds.c", lcs50=True)
+
+@check50.check(compiles)
+def prompts_user():
+    """prompts user properly"""
+    check50.run("./diamonds").stdout("Size: ")
+
+@check50.check(prompts_user)
+def low_value():
+    """rejects low value"""
+    check50.run("./diamonds").stdin("0").stdout("Size: ")
+
+@check50.check(low_value)
+def high_value():
+    """rejects high value"""
+    check50.run("./diamonds").stdin("21").stdout("Size: ")
+
+@check50.check(high_value)
+def one():
+    """1 row diamond"""
+    print("*")
+    print("\*")
+    check50.run("./diamonds").stdin("1").stdout("\*")
+
 #@check50.check(one)
 #def two():
 #    """2 row diamond"""
