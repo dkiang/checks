@@ -40,7 +40,9 @@ def two():
 @check50.check(prompts_user)
 def three():
     """3 row diamond"""
-    check50.run("./diamonds").stdin("3").stdout("  *\n * *\n  *".rstrip())
+    check50.run("./diamonds").stdin("3").stdout("""  *
+ * *
+  *""")
 
 @check50.check(prompts_user)
 def four():
