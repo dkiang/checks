@@ -30,7 +30,7 @@ def high_value():
 @check50.check(prompts_user)
 def one():
     """1 row diamond"""
-    check50.run("./diamonds").stdin("1").stdout("*".rstrip())
+    check50.run("./diamonds").stdin("1").stdout("""*""")
 
 @check50.check(prompts_user)
 def two():
