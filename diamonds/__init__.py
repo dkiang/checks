@@ -98,19 +98,19 @@ def prompts():
     check50.run("./diamonds").stdout("Size: ")
 
 
-@check50.check(prompts)
+@check50.check()
 def low_value():
     """Does diamonds.c reject a low value?"""
     check50.run("./diamonds").stdin("0").stdout("Size: ")
 
 
-@check50.check(prompts)
+@check50.check()
 def high_value():
     """Does diamonds.c reject a high value?"""
     check50.run("./diamonds").stdin("21").stdout("Size: ")
 
 
-@check50.check(prompts)
+@check50.check()
 def one():
     """Does diamonds.c produce a proper 1 tall diamond?"""
     output = check50.run("./diamonds").stdin("1").stdout()
