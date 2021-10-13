@@ -42,7 +42,7 @@ def generate(rows):
     return simulated_output
 
 
-def print_row_with_extra_space(size, spaces):
+def print_rowr_with_extra_space(size, spaces):
     global simulated_output
     spaces = spaces - size
     i = 0
@@ -58,6 +58,8 @@ def print_row_with_extra_space(size, spaces):
 
 
 def generate_with_extra_space(rows):
+    global simulated_output
+    simulated_output = ""
     if rows % 2 == 1:
         spacing = math.trunc(rows / 2) + 1
     else:
@@ -65,13 +67,13 @@ def generate_with_extra_space(rows):
     length = math.trunc(rows / 2)
     current_length = 1
     while current_length <= length:
-        print_row_with_extra_space(current_length, spacing)
+        print_rowr_with_extra_space(current_length, spacing)
         current_length += 1
     if rows % 2 == 1:
-        print_row_with_extra_space(spacing, spacing)
+        print_rowr_with_extra_space(spacing, spacing)
     while current_length > 1:
         current_length -= 1
-        print_row_with_extra_space(current_length, spacing)
+        print_rowr_with_extra_space(current_length, spacing)
     return simulated_output
 
 
@@ -118,4 +120,3 @@ def one():
         return True
     else:
         return False
-
