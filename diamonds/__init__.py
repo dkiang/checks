@@ -3,6 +3,11 @@ import check50
 from check50 import c
 
 @check50.check()
+def download():
+    """ Downloading Tests """
+    check50.run("wget https://raw.githubusercontent.com/Alexandre2006/checks/master/diamonds/sample.c")
+
+@check50.check()
 def test():
     """Sample test"""
     c.compile("sample.c")
