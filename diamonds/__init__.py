@@ -115,8 +115,8 @@ def high_value():
 @check50.check()
 def one():
     """Does diamonds.c produce a proper 1 tall diamond?"""
-    output = check50.run("./diamonds").stdin("1").stdout()
+    output = check50.run("./diamonds").stdin("1").stdout().stdout()
     if get_valid_outputs(1).count(output) != 0:
         pass
     else:
-        raise check50.Mismatch(get_valid_outputs(1)[1], output, help=output)
+        raise check50.Mismatch(get_valid_outputs(1)[1], output)
