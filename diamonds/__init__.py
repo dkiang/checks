@@ -114,7 +114,7 @@ def high_value():
 def one():
     """Does diamonds.c produce a proper 1 tall diamond?"""
     output = check50.run("./diamonds").stdin("1").stdout()
-    if get_valid_outputs(1).__contains__(output):
+    if get_valid_outputs(1).count(output) != 0:
         return True
     else:
         return False
