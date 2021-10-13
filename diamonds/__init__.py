@@ -110,7 +110,7 @@ def low_value():
 @check50.check()
 def high_value():
     """Does diamonds.c reject a high value?"""
-    check50.run("./diamonds").stdin("21").stdout("Size: ")
+    check50.c.run("./diamonds").stdin("21").stdout("Size: ")
 
 
 @check50.check()
