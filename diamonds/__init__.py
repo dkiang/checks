@@ -1,5 +1,6 @@
 import math
 import time
+from subprocess import Popen, PIPE
 
 import check50
 
@@ -98,7 +99,9 @@ def runs():
 @check50.check(runs)
 def prompts():
     """Does diamonds.c prompt the user properly?"""
-    check50.run("./diamonds").stdout("Size: ")
+    process = Popen(["./diamonds"], stdout=PIPE)
+    (output, err) = process.communicate()
+    raise check50.Mismatch(output, output, output)
 
 
 @check50.check()
