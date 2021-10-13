@@ -117,6 +117,7 @@ def one():
     """Does diamonds.c produce a proper 1 tall diamond?"""
     output = check50.run("./diamonds").stdin("1").stdout()
     if get_valid_outputs(1).count(output) != 0:
+        check50.Mismatch("Expected: " + get_valid_outputs(1) + "\n\n Output: " + output)
         return True
     else:
         return False
