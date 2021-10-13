@@ -119,6 +119,7 @@ def one():
     if get_valid_outputs(1).count(output) != 0:
         pass
     else:
+        check50.log(output)
         raise check50.Mismatch(get_valid_outputs(1), output, help="Note that the valid outputs is a list containing "
                                                                   "the two valid outputs. Only use one when designing"
                                                                   " your program.")
