@@ -83,7 +83,7 @@ def get_valid_outputs(rows):
 @check50.check()
 def compiles():
     """Does diamonds.c compile?"""
-    check50.c.compile("diamonds.c", "lcs50")
+    check50.c.compile("diamonds.c", lcs50=True)
 
 
 @check50.check(compiles)
