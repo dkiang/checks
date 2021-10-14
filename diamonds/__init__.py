@@ -124,4 +124,10 @@ def high_value():
 @check50.check()
 def one():
     """Does diamonds.c produce a proper 1 tall diamond?"""
-    output = check50.run("./diamonds").stdin("1").stdout(timeout=5)
+    output = check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
+                           "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ./diamonds").stdin(
+        "1").stdout()
+    if output in get_valid_outputs(1):
+        return True
+    else:
+        raise check50.Mismatch(get_valid_outputs(1)[1], output)
