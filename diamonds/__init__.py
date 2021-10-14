@@ -84,7 +84,7 @@ def get_valid_outputs(rows):
 
 def recompile():
     check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
-                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds")
+                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ls -a").stdout("TEST")
 
 
 @check50.check()
