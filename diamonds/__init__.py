@@ -1,5 +1,4 @@
 import math
-import sarge
 
 import check50
 
@@ -105,10 +104,7 @@ def runs():
 @check50.check(runs)
 def prompts():
     """Does diamonds.c prompt the user properly?"""
-    proc = sarge.run("./diamonds", async_=True, stdout=sarge.Capture(buffer_size=1))
-    output = proc.stdout.text
-    proc.close()
-    raise check50.Mismatch(get_valid_outputs(1)[1], output)
+    check50.c.run("./diamonds").stdout("Size: ")
 
 
 @check50.check()
