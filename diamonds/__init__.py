@@ -92,7 +92,7 @@ def compiles():
 def runs():
     """Does diamonds.c run?"""
     check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
-                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ls -a").stdin(
+                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ./diamonds").stdin(
         "10").exit()
 
 
@@ -100,7 +100,7 @@ def runs():
 def prompts():
     """Does diamonds.c prompt the user properly?"""
     check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
-                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ls -a").stdout(
+                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ./diamonds").stdout(
         "Size: "
     )
 
@@ -109,7 +109,7 @@ def prompts():
 def low_value():
     """Does diamonds.c reject a low value?"""
     check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
-                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ls -a").stdin(
+                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ./diamonds").stdin(
         "0").stdout("Size: ")
 
 
@@ -117,7 +117,7 @@ def low_value():
 def high_value():
     """Does diamonds.c reject a high value?"""
     check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
-                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ls -a").stdin(
+                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ./diamonds").stdin(
         "21").stdout("Size: ")
 
 
