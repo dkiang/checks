@@ -107,6 +107,7 @@ def prompts():
     """Does diamonds.c prompt the user properly?"""
     proc = sarge.run("./diamonds", async_=True, stdout=sarge.Capture(buffer_size=1))
     output = proc.stdout.read()
+    proc.close()
     raise check50.Mismatch(get_valid_outputs(1)[1], output)
 
 
