@@ -82,11 +82,6 @@ def get_valid_outputs(rows):
     return outputs
 
 
-def recompile():
-    check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
-                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ls -a").stdout("TEST")
-
-
 @check50.check()
 def compiles():
     """Does diamonds.c compile?"""
@@ -96,27 +91,34 @@ def compiles():
 @check50.check(compiles)
 def runs():
     """Does diamonds.c run?"""
-    check50.run("./diamonds").stdin("10").exit()
+    check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
+                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ls -a").stdin(
+        10).exit()
 
 
 @check50.check(runs)
 def prompts():
     """Does diamonds.c prompt the user properly?"""
-    check50.c.run("./diamonds").stdout("Size: ")
+    check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
+                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ls -a").stdout(
+        "Size: "
+    )
 
 
 @check50.check()
 def low_value():
     """Does diamonds.c reject a low value?"""
-    recompile()
-    check50.run("./diamonds").stdin("0").stdout("Size: ")
+    check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
+                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ls -a").stdin(
+        "0").stdout("Size: ")
 
 
 @check50.check()
 def high_value():
     """Does diamonds.c reject a high value?"""
-    recompile()
-    check50.c.run("ls -a").stdin("20", prompt=False).stdout("Size: ")
+    check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
+                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ls -a").stdin(
+        "21").stdout("Size: ")
 
 
 @check50.check()
