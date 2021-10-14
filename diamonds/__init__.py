@@ -93,7 +93,7 @@ def runs():
     """Does diamonds.c run?"""
     check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
                   "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ls -a").stdin(
-        10).exit()
+        "10").exit()
 
 
 @check50.check(runs)
