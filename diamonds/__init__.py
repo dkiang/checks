@@ -85,6 +85,13 @@ def get_valid_outputs(rows):
     return outputs
 
 
+def get_output(stdout):
+    output = ""
+    for i in stdout:
+        output += i + "\n"
+    return output
+
+
 @check50.check()
 def compiles():
     """Does diamonds.c compile?"""
@@ -102,7 +109,7 @@ def prompts():
     """Does diamonds.c prompt the user properly?"""
     process = subprocess.Popen(["./diamonds"], stdout=subprocess.PIPE, shell=True)
     process.terminate()
-    raise check50.Mismatch(get_valid_outputs(1)[1], process.stdout)
+    raise check50.Mismatch(get_valid_outputs(1)[1], get_output(process.stdout))
 
 
 @check50.check()
@@ -121,7 +128,3 @@ def high_value():
 def one():
     """Does diamonds.c produce a proper 1 tall diamond?"""
     output = check50.run("./diamonds").stdin("1").stdout(timeout=5)
-    if get_valid_outputs(1).count(output) != 0:
-        pass
-    else:
-        raise check50.Mismatch(get_valid_outputs(1)[1], output)
