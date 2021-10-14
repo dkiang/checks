@@ -101,221 +101,119 @@ def high_value():
 
 @check50.check(runs)
 def one():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 1 tall diamond?"""
     return check(1)
-=======
-    """1 row diamond"""
-    check50.run("./diamonds").stdin("1").stdout("""*""")
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 
 @check50.check(runs)
 def two():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 2 tall diamond?"""
     return check(2)
 
-=======
-    """2 row diamond"""
-    check50.run("./diamonds").stdin("2").stdout("*\n *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 @check50.check(runs)
 def three():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 3 tall diamond?"""
     return check(3)
-=======
-    """3 row diamond"""
-    check50.run("./diamonds").stdin("3").stdout("""  *
- * *
-  *""")
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 
 @check50.check(runs)
 def four():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 4 tall diamond?"""
     return check(4)
 
-=======
-    """4 row diamond"""
-    check50.run("./diamonds").stdin("4").stdout("  *\n * *\n * *\n  *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 @check50.check(runs)
 def five():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 5 tall diamond?"""
     return check(5)
 
-=======
-    """5 row diamond"""
-    check50.run("./diamonds").stdin("5").stdout("   *\n  * *\n * * *\n  * *\n   *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 @check50.check(runs)
 def six():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 6 tall diamond?"""
     return check(6)
-=======
-    """6 row diamond"""
-    check50.run("./diamonds").stdin("6").stdout("   *\n  * *\n * * *\n * * *\n  * *\n   *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 
 @check50.check(runs)
 def seven():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 7 tall diamond?"""
     return check(7)
 
-=======
-    """7 row diamond"""
-    check50.run("./diamonds").stdin("7").stdout("    *\n   * *\n  * * *\n * * * *\n  * * *\n   * *\n    *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 @check50.check(runs)
 def eight():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 8 tall diamond?"""
     return check(8)
-=======
-    """8 row diamond"""
-    check50.run("./diamonds").stdin("8").stdout("    *\n   * *\n  * * *\n * * * *\n * * * *\n  * * *\n   * *\n    *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 
 @check50.check(runs)
 def nine():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 9 tall diamond?"""
     return check(9)
 
-=======
-    """9 row diamond"""
-    check50.run("./diamonds").stdin("9").stdout("     *\n    * *\n   * * *\n  * * * *\n * * * * *\n  * * * *\n   * * *\n    * *\n     *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 @check50.check(runs)
 def ten():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 10 tall diamond?"""
     return check(10)
-=======
-    """10 row diamond"""
-    check50.run("./diamonds").stdin("10").stdout("     *\n    * *\n   * * *\n  * * * *\n * * * * *\n * * * * *\n  * * * *\n   * * *\n    * *\n     *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 
 @check50.check(runs)
 def eleven():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 11 tall diamond?"""
     return check(11)
 
-=======
-    """11 row diamond"""
-    check50.run("./diamonds").stdin("11").stdout("      *\n     * *\n    * * *\n   * * * *\n  * * * * *\n * * * * * *\n  * * * * *\n   * * * *\n    * * *\n     * *\n      *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 @check50.check(runs)
 def twelve():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 12 tall diamond?"""
     return check(12)
 
-=======
-    """12 row diamond"""
-    check50.run("./diamonds").stdin("12").stdout("      *\n     * *\n    * * *\n   * * * *\n  * * * * *\n * * * * * *\n * * * * * *\n  * * * * *\n   * * * *\n    * * *\n     * *\n      *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 @check50.check(runs)
 def thirteen():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 13 tall diamond?"""
     return check(13)
-=======
-    """13 row diamond"""
-    check50.run("./diamonds").stdin("13").stdout("       *\n      * *\n     * * *\n    * * * *\n   * * * * *\n  * * * * * *\n * * * * * * *\n  * * * * * *\n   * * * * *\n    * * * *\n     * * *\n      * *\n       *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 
 @check50.check(runs)
 def fourteen():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 14 tall diamond?"""
     return check(14)
 
-=======
-    """14 row diamond"""
-    check50.run("./diamonds").stdin("14").stdout("       *\n      * *\n     * * *\n    * * * *\n   * * * * *\n  * * * * * *\n * * * * * * *\n * * * * * * *\n  * * * * * *\n   * * * * *\n    * * * *\n     * * *\n      * *\n       *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 @check50.check(runs)
 def fifteen():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 15 tall diamond?"""
     return check(15)
-=======
-    """15 row diamond"""
-    check50.run("./diamonds").stdin("15").stdout("        *\n       * *\n      * * *\n     * * * *\n    * * * * *\n   * * * * * *\n  * * * * * * *\n * * * * * * * *\n  * * * * * * *\n   * * * * * *\n    * * * * *\n     * * * *\n      * * *\n       * *\n        *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 
 @check50.check(runs)
 def sixteen():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 16 tall diamond?"""
     return check(16)
 
-=======
-    """16 row diamond"""
-    check50.run("./diamonds").stdin("16").stdout("        *\n       * *\n      * * *\n     * * * *\n    * * * * *\n   * * * * * *\n  * * * * * * *\n * * * * * * * *\n * * * * * * * *\n  * * * * * * *\n   * * * * * *\n    * * * * *\n     * * * *\n      * * *\n       * *\n        *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 @check50.check(runs)
 def seventeen():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 17 tall diamond?"""
     return check(17)
-=======
-    """17 row diamond"""
-    check50.run("./diamonds").stdin("17").stdout("         *\n        * *\n       * * *\n      * * * *\n     * * * * *\n    * * * * * *\n   * * * * * * *\n  * * * * * * * *\n * * * * * * * * *\n  * * * * * * * *\n   * * * * * * *\n    * * * * * *\n     * * * * *\n      * * * *\n       * * *\n        * *\n         *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 
 @check50.check(runs)
 def eighteen():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 18 tall diamond?"""
     return check(18)
 
-=======
-    """18 row diamond"""
-    check50.run("./diamonds").stdin("18").stdout("         *\n        * *\n       * * *\n      * * * *\n     * * * * *\n    * * * * * *\n   * * * * * * *\n  * * * * * * * *\n * * * * * * * * *\n * * * * * * * * *\n  * * * * * * * *\n   * * * * * * *\n    * * * * * *\n     * * * * *\n      * * * *\n       * * *\n        * *\n         *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 @check50.check(runs)
 def nineteen():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 19 tall diamond?"""
     return check(19)
 
-=======
-    """19 row diamond"""
-    check50.run("./diamonds").stdin("19").stdout("          *\n         * *\n        * * *\n       * * * *\n      * * * * *\n     * * * * * *\n    * * * * * * *\n   * * * * * * * *\n  * * * * * * * * *\n * * * * * * * * * *\n  * * * * * * * * *\n   * * * * * * * *\n    * * * * * * *\n     * * * * * *\n      * * * * *\n       * * * *\n        * * *\n         * *\n          *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
 
 @check50.check(runs)
 def twenty():
-<<<<<<< HEAD
     """Does diamonds.c produce a proper 20 tall diamond?"""
     return check(20)
-=======
-    """20 row diamond"""
-    check50.run("./diamonds").stdin("20").stdout("          *\n         * *\n        * * *\n       * * * *\n      * * * * *\n     * * * * * *\n    * * * * * * *\n   * * * * * * * *\n  * * * * * * * * *\n * * * * * * * * * *\n * * * * * * * * * *\n  * * * * * * * * *\n   * * * * * * * *\n    * * * * * * *\n     * * * * * *\n      * * * * *\n       * * * *\n        * * *\n         * *\n          *".rstrip())
->>>>>>> 8971019065e43c9c1962ac7ac4ec11bb54d3b940
