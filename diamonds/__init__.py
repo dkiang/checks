@@ -1,7 +1,5 @@
 import math
-import subprocess
-import time
-from subprocess import PIPE
+import sarge
 
 import check50
 
@@ -45,7 +43,7 @@ def generate(rows):
     return simulated_output
 
 
-def print_rowr_with_extra_space(size, spaces):
+def print_row_with_extra_space(size, spaces):
     global simulated_output
     spaces = spaces - size
     i = 0
@@ -70,13 +68,13 @@ def generate_with_extra_space(rows):
     length = math.trunc(rows / 2)
     current_length = 1
     while current_length <= length:
-        print_rowr_with_extra_space(current_length, spacing)
+        print_row_with_extra_space(current_length, spacing)
         current_length += 1
     if rows % 2 == 1:
-        print_rowr_with_extra_space(spacing, spacing)
+        print_row_with_extra_space(spacing, spacing)
     while current_length > 1:
         current_length -= 1
-        print_rowr_with_extra_space(current_length, spacing)
+        print_row_with_extra_space(current_length, spacing)
     return simulated_output
 
 
@@ -107,9 +105,8 @@ def runs():
 @check50.check(runs)
 def prompts():
     """Does diamonds.c prompt the user properly?"""
-    process = subprocess.Popen(["./diamonds"], stdout=subprocess.PIPE, shell=True)
-    output = get_output(process.stdout)
-    process.terminate()
+    proc = sarge.run("./diamonds", async_=True, stdout=sarge.Capture(buffer_size=1))
+    output = proc.stdout.read()
     raise check50.Mismatch(get_valid_outputs(1)[1], output)
 
 
