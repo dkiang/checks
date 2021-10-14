@@ -110,13 +110,13 @@ def prompts():
 @check50.check()
 def low_value():
     """Does diamonds.c reject a low value?"""
-    check50.run("./diamonds").stdin("0").stdout("Size: ")
+    check50.run("./diamonds").stdin("0\n").stdout("Size: ")
 
 
 @check50.check()
 def high_value():
     """Does diamonds.c reject a high value?"""
-    check50.c.run("./diamonds").stdin("21").stdout("Size: ")
+    check50.c.run("./diamonds").stdin("21\n").stdout("Size: ")
 
 
 @check50.check()
