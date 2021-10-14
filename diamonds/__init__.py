@@ -108,7 +108,9 @@ def runs():
 def prompts():
     """Does diamonds.c prompt the user properly?"""
     process = subprocess.Popen(["./diamonds"], stdout=subprocess.PIPE, shell=True)
-    raise check50.Mismatch(get_valid_outputs(1)[1], get_output(process.stdout))
+    output = get_output(process.stdout)
+    process.terminate()
+    raise check50.Mismatch(get_valid_outputs(1)[1], output)
 
 
 @check50.check()
