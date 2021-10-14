@@ -2,6 +2,8 @@ check50:
   files: &check50_files
     - !exclude "*"
     - !require diamonds.c
+  dependencies:
+    - sarge
 
 submit50:
   files: *check50_files
