@@ -116,7 +116,7 @@ def low_value():
 def high_value():
     """Does diamonds.c reject a high value?"""
     recompile()
-    check50.c.run("./diamonds").stdin("20", prompt=False).stdout("Size: ")
+    check50.c.run("ls -a").stdin("20", prompt=False).stdout("Size: ")
 
 
 @check50.check()
