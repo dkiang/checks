@@ -82,11 +82,9 @@ def get_valid_outputs(rows):
     return outputs
 
 
-def get_output(stdout):
-    output = ""
-    for i in stdout:
-        output += i + "\n"
-    return output
+def recompile():
+    check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
+                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds")
 
 
 @check50.check()
@@ -110,14 +108,15 @@ def prompts():
 @check50.check()
 def low_value():
     """Does diamonds.c reject a low value?"""
+    recompile()
     check50.run("./diamonds").stdin("0").stdout("Size: ")
 
 
 @check50.check()
 def high_value():
     """Does diamonds.c reject a high value?"""
-    check50.c.compile("diamonds.c", lcs50=True)
-    check50.c.run("./diamonds").stdin("21", prompt=False).stdout("Size: ")
+    recompile()
+    check50.c.run("./diamonds").stdin("20", prompt=False).stdout("Size: ")
 
 
 @check50.check()
