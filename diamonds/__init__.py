@@ -49,9 +49,7 @@ def generate(rows, extra_space=False, extra_end_space=False):
 
 def get_valid_outputs(rows):
     outputs = [generate(rows, False, False),
-               generate(rows, True, False),
                generate(rows, False, True),
-               generate(rows, True, True)]
     return outputs
 
 
