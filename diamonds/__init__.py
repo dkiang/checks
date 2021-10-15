@@ -1,130 +1,219 @@
-import re
+import math
+
 import check50
-import check50.c
+
+from check50 import c
+
+simulated_output = ""
+
+
+def print_row(size, spaces, extra_space):
+    global simulated_output
+    spaces = spaces - size
+    i = 0
+    while i < spaces:
+        i += 1
+        simulated_output += " "
+    printed = 1
+    if not extra_space:
+        simulated_output += "*"
+    else:
+        simulated_output += " *"
+    while printed < size:
+        printed += 1
+        simulated_output += " *"
+    simulated_output += "\n"
+
+
+def generate(rows, extra_space=False):
+    global simulated_output
+    simulated_output = ""
+    if rows % 2 == 1:
+        spacing = math.trunc(rows / 2) + 1
+    else:
+        spacing = math.trunc(rows / 2)
+    length = math.trunc(rows / 2)
+    current_length = 1
+    while current_length <= length:
+        print_row(current_length, spacing, extra_space)
+        current_length += 1
+    if rows % 2 == 1:
+        print_row(spacing, spacing, extra_space)
+    while current_length > 1:
+        current_length -= 1
+        print_row(current_length, spacing, extra_space)
+    return simulated_output
+
+
+def get_valid_outputs(rows):
+    outputs = [generate(rows), generate(rows, True)]
+    return outputs
+
+
+def check(rows):
+    output = check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
+                           "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && "
+                           "./diamonds").stdin(str(rows)).stdout()
+    if output in get_valid_outputs(rows):
+        return True
+    else:
+        raise check50.Mismatch(get_valid_outputs(rows)[1], output)
+
 
 @check50.check()
-def exists():
-    """diamonds.c exists"""
-    check50.exists("diamonds.c")
-
-@check50.check(exists)
 def compiles():
-    """diamonds.c compiles."""
+    """Does diamonds.c compile?"""
     check50.c.compile("diamonds.c", lcs50=True)
 
+
 @check50.check(compiles)
-def prompts_user():
-    """prompts user properly"""
-    check50.run("./diamonds").stdout("Size: ")
+def runs():
+    """Does diamonds.c run?"""
+    check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
+                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ./diamonds").stdin(
+        "10").exit()
 
-@check50.check(prompts_user)
+
+@check50.check(runs)
+def prompts():
+    """Does diamonds.c prompt the user properly?"""
+    check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
+                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ./diamonds").stdout(
+        "Size: "
+    )
+
+
+@check50.check(runs)
 def low_value():
-    """rejects low value"""
-    check50.run("./diamonds").stdin("0").stdout("Size: ")
+    """Does diamonds.c reject a low value?"""
+    check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
+                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ./diamonds").stdin(
+        "0").stdout("Size: ")
 
-@check50.check(low_value)
+
+@check50.check(runs)
 def high_value():
-    """rejects high value"""
-    check50.run("./diamonds").stdin("21").stdout("Size: ")
+    """Does diamonds.c reject a high value?"""
+    check50.c.run("clang -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-sign-compare -Wno-unused-parameter "
+                  "-Wno-unused-variable -Wshadow    diamonds.c  -lcrypt -lcs50 -lm -o diamonds && ./diamonds").stdin(
+        "21").stdout("Size: ")
 
-@check50.check(high_value)
+
+@check50.check(runs)
 def one():
-    """1 row diamond"""
-    print("*")
-    print("\*")
-    check50.run("./diamonds").stdin("1").stdout("\*")
+    """Does diamonds.c produce a proper 1 tall diamond?"""
+    return check(1)
 
-@check50.check(one)
+
+@check50.check(runs)
 def two():
-    """2 row diamond"""
-    check50.run("./diamonds").stdin("2").stdout("\*\n\*")
+    """Does diamonds.c produce a proper 2 tall diamond?"""
+    return check(2)
 
-@check50.check(two)
+
+@check50.check(runs)
 def three():
-    """3 row diamond"""
-    check50.run("./diamonds").stdin("3").stdout(" \*\n\* \*\n \*")
+    """Does diamonds.c produce a proper 3 tall diamond?"""
+    return check(3)
 
-@check50.check(three)
+
+@check50.check(runs)
 def four():
-    """4 row diamond"""
-    check50.run("./diamonds").stdin("4").stdout(" \*\n\* \*\n\* \*\n \*")
+    """Does diamonds.c produce a proper 4 tall diamond?"""
+    return check(4)
 
-@check50.check(four)
+
+@check50.check(runs)
 def five():
-    """5 row diamond"""
-    check50.run("./diamonds").stdin("5").stdout("  \*\n \* \*\n\* \* \*\n \* \*\n  \*")
+    """Does diamonds.c produce a proper 5 tall diamond?"""
+    return check(5)
 
-@check50.check(five)
+
+@check50.check(runs)
 def six():
-    """6 row diamond"""
-    check50.run("./diamonds").stdin("6").stdout("  \*\n \* \*\n\* \* \*\n\* \* \*\n \* \*\n  \*")
+    """Does diamonds.c produce a proper 6 tall diamond?"""
+    return check(6)
 
-@check50.check(six)
+
+@check50.check(runs)
 def seven():
-    """7 row diamond"""
-    check50.run("./diamonds").stdin("7").stdout("   \*\n  \* \*\n \* \* \*\n\* \* \* \*\n \* \* \*\n  \* \*\n   \*")
+    """Does diamonds.c produce a proper 7 tall diamond?"""
+    return check(7)
 
-@check50.check(seven)
+
+@check50.check(runs)
 def eight():
-    """8 row diamond"""
-    check50.run("./diamonds").stdin("8").stdout("   \*\n  \* \*\n \* \* \*\n\* \* \* \*\n\* \* \* \*\n \* \* \*\n  \* \*\n   \*")
+    """Does diamonds.c produce a proper 8 tall diamond?"""
+    return check(8)
 
-@check50.check(eight)
+
+@check50.check(runs)
 def nine():
-    """9 row diamond"""
-    check50.run("./diamonds").stdin("9").stdout("    \*\n   \* \*\n  \* \* \*\n \* \* \* \*\n\* \* \* \* \*\n \* \* \* \*\n  \* \* \*\n   \* \*\n    \*")
+    """Does diamonds.c produce a proper 9 tall diamond?"""
+    return check(9)
 
-@check50.check(nine)
+
+@check50.check(runs)
 def ten():
-    """10 row diamond"""
-    check50.run("./diamonds").stdin("10").stdout("    \*\n   \* \*\n  \* \* \*\n \* \* \* \*\n\* \* \* \* \*\n\* \* \* \* \*\n \* \* \* \*\n  \* \* \*\n   \* \*\n    \*")
+    """Does diamonds.c produce a proper 10 tall diamond?"""
+    return check(10)
 
-@check50.check(ten)
+
+@check50.check(runs)
 def eleven():
-    """11 row diamond"""
-    check50.run("./diamonds").stdin("11").stdout("     \*\n    \* \*\n   \* \* \*\n  \* \* \* \*\n \* \* \* \* \*\n\* \* \* \* \* \*\n \* \* \* \* \*\n  \* \* \* \*\n   \* \* \*\n    \* \*\n     \*")
+    """Does diamonds.c produce a proper 11 tall diamond?"""
+    return check(11)
 
-@check50.check(eleven)
+
+@check50.check(runs)
 def twelve():
-    """12 row diamond"""
-    check50.run("./diamonds").stdin("12").stdout("     \*\n    \* \*\n   \* \* \*\n  \* \* \* \*\n \* \* \* \* \*\n\* \* \* \* \* \*\n\* \* \* \* \* \*\n \* \* \* \* \*\n  \* \* \* \*\n   \* \* \*\n    \* \*\n     \*")
+    """Does diamonds.c produce a proper 12 tall diamond?"""
+    return check(12)
 
-@check50.check(twelve)
+
+@check50.check(runs)
 def thirteen():
-    """13 row diamond"""
-    check50.run("./diamonds").stdin("13").stdout("      \*\n     \* \*\n    \* \* \*\n   \* \* \* \*\n  \* \* \* \* \*\n \* \* \* \* \* \*\n\* \* \* \* \* \* \*\n \* \* \* \* \* \*\n  \* \* \* \* \*\n   \* \* \* \*\n    \* \* \*\n     \* \*\n      \*")
+    """Does diamonds.c produce a proper 13 tall diamond?"""
+    return check(13)
 
-@check50.check(thirteen)
+
+@check50.check(runs)
 def fourteen():
-    """14 row diamond"""
-    check50.run("./diamonds").stdin("14").stdout("      \*\n     \* \*\n    \* \* \*\n   \* \* \* \*\n  \* \* \* \* \*\n \* \* \* \* \* \*\n\* \* \* \* \* \* \*\n\* \* \* \* \* \* \*\n \* \* \* \* \* \*\n  \* \* \* \* \*\n   \* \* \* \*\n    \* \* \*\n     \* \*\n      \*")
+    """Does diamonds.c produce a proper 14 tall diamond?"""
+    return check(14)
 
-@check50.check(fourteen)
+
+@check50.check(runs)
 def fifteen():
-    """15 row diamond"""
-    check50.run("./diamonds").stdin("15").stdout("       \*\n      \* \*\n     \* \* \*\n    \* \* \* \*\n   \* \* \* \* \*\n  \* \* \* \* \* \*\n \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \*\n \* \* \* \* \* \* \*\n  \* \* \* \* \* \*\n   \* \* \* \* \*\n    \* \* \* \*\n     \* \* \*\n      \* \*\n       \*")
+    """Does diamonds.c produce a proper 15 tall diamond?"""
+    return check(15)
 
-@check50.check(fifteen)
+
+@check50.check(runs)
 def sixteen():
-    """16 row diamond"""
-    check50.run("./diamonds").stdin("16").stdout("       \*\n      \* \*\n     \* \* \*\n    \* \* \* \*\n   \* \* \* \* \*\n  \* \* \* \* \* \*\n \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \*\n \* \* \* \* \* \* \*\n  \* \* \* \* \* \*\n   \* \* \* \* \*\n    \* \* \* \*\n     \* \* \*\n      \* \*\n       \*")
+    """Does diamonds.c produce a proper 16 tall diamond?"""
+    return check(16)
 
-@check50.check(sixteen)
+
+@check50.check(runs)
 def seventeen():
-    """17 row diamond"""
-    check50.run("./diamonds").stdin("17").stdout("        \*\n       \* \*\n      \* \* \*\n     \* \* \* \*\n    \* \* \* \* \*\n   \* \* \* \* \* \*\n  \* \* \* \* \* \* \*\n \* \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \* \*\n \* \* \* \* \* \* \* \*\n  \* \* \* \* \* \* \*\n   \* \* \* \* \* \*\n    \* \* \* \* \*\n     \* \* \* \*\n      \* \* \*\n       \* \*\n        \*")
+    """Does diamonds.c produce a proper 17 tall diamond?"""
+    return check(17)
 
-@check50.check(seventeen)
+
+@check50.check(runs)
 def eighteen():
-    """18 row diamond"""
-    check50.run("./diamonds").stdin("18").stdout("        \*\n       \* \*\n      \* \* \*\n     \* \* \* \*\n    \* \* \* \* \*\n   \* \* \* \* \* \*\n  \* \* \* \* \* \* \*\n \* \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \* \*\n \* \* \* \* \* \* \* \*\n  \* \* \* \* \* \* \*\n   \* \* \* \* \* \*\n    \* \* \* \* \*\n     \* \* \* \*\n      \* \* \*\n       \* \*\n        \*")
+    """Does diamonds.c produce a proper 18 tall diamond?"""
+    return check(18)
 
-@check50.check(eighteen)
+
+@check50.check(runs)
 def nineteen():
-    """19 row diamond"""
-    check50.run("./diamonds").stdin("19").stdout("         \*\n        \* \*\n       \* \* \*\n      \* \* \* \*\n     \* \* \* \* \*\n    \* \* \* \* \* \*\n   \* \* \* \* \* \* \*\n  \* \* \* \* \* \* \* \*\n \* \* \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \* \* \*\n \* \* \* \* \* \* \* \* \*\n  \* \* \* \* \* \* \* \*\n   \* \* \* \* \* \* \*\n    \* \* \* \* \* \*\n     \* \* \* \* \*\n      \* \* \* \*\n       \* \* \*\n        \* \*\n         \*")
+    """Does diamonds.c produce a proper 19 tall diamond?"""
+    return check(19)
 
-@check50.check(nineteen)
+
+@check50.check(runs)
 def twenty():
-    """20 row diamond"""
-    check50.run("./diamonds").stdin("20").stdout("         \*\n        \* \*\n       \* \* \*\n      \* \* \* \*\n     \* \* \* \* \*\n    \* \* \* \* \* \*\n   \* \* \* \* \* \* \*\n  \* \* \* \* \* \* \* \*\n \* \* \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \* \* \*\n\* \* \* \* \* \* \* \* \* \*\n \* \* \* \* \* \* \* \* \*\n  \* \* \* \* \* \* \* \*\n   \* \* \* \* \* \* \*\n    \* \* \* \* \* \*\n     \* \* \* \* \*\n      \* \* \* \*\n       \* \* \*\n        \* \*\n         \*")
+    """Does diamonds.c produce a proper 20 tall diamond?"""
+    return check(20)
