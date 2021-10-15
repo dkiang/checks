@@ -57,7 +57,8 @@ def check(rows):
     if output in get_valid_outputs(rows):
         return True
     else:
-        raise check50.Mismatch(get_valid_outputs(rows)[1], output)
+        error = get_valid_outputs(rows)[0] + "or\n" + get_valid_outputs(rows)[1]
+        raise check50.Mismatch(error, output)
 
 
 @check50.check()
