@@ -49,7 +49,7 @@ def generate(rows, extra_space=False, extra_end_space=False):
 
 def get_valid_outputs(rows):
     outputs = [generate(rows, False, False),
-               generate(rows, False, True)
+               generate(rows, False, True)]
     return outputs
 
 
@@ -61,9 +61,7 @@ def check(rows):
         return True
     else:
         error = get_valid_outputs(rows)[0] + \
-                "or\n" + get_valid_outputs(rows)[1] + \
-                "or\n" + get_valid_outputs(rows)[2] +\
-                "or\n" + get_valid_outputs(rows)[3]
+                "or\n" + get_valid_outputs(rows)[1]
         raise check50.Mismatch(error, output)
 
 
