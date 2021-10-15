@@ -7,7 +7,7 @@ from check50 import c
 simulated_output = ""
 
 
-def print_row(size, spaces, extra_space):
+def print_row(size, spaces, extra_space, extra_end_space=False):
     global simulated_output
     spaces = spaces - size
     i = 0
@@ -22,10 +22,12 @@ def print_row(size, spaces, extra_space):
     while printed < size:
         printed += 1
         simulated_output += " *"
+    if extra_end_space:
+        simulated_output += " "
     simulated_output += "\n"
 
 
-def generate(rows, extra_space=False):
+def generate(rows, extra_space=False, extra_end_space=False):
     global simulated_output
     simulated_output = ""
     if rows % 2 == 1:
@@ -35,18 +37,21 @@ def generate(rows, extra_space=False):
     length = math.trunc(rows / 2)
     current_length = 1
     while current_length <= length:
-        print_row(current_length, spacing, extra_space)
+        print_row(current_length, spacing, extra_space, extra_end_space)
         current_length += 1
     if rows % 2 == 1:
-        print_row(spacing, spacing, extra_space)
+        print_row(spacing, spacing, extra_space, extra_end_space)
     while current_length > 1:
         current_length -= 1
-        print_row(current_length, spacing, extra_space)
+        print_row(current_length, spacing, extra_space, extra_end_space)
     return simulated_output
 
 
 def get_valid_outputs(rows):
-    outputs = [generate(rows), generate(rows, True)]
+    outputs = [generate(rows, False, False),
+               generate(rows, True, False),
+               generate(rows, False, True),
+               generate(rows, True, True)]
     return outputs
 
 
@@ -57,7 +62,10 @@ def check(rows):
     if output in get_valid_outputs(rows):
         return True
     else:
-        error = get_valid_outputs(rows)[0] + "or\n" + get_valid_outputs(rows)[1]
+        error = get_valid_outputs(rows)[0] + \
+                "or\n" + get_valid_outputs(rows)[1] + \
+                "or\n" + get_valid_outputs(rows)[2] +\
+                "or\n" + get_valid_outputs(rows)[3]
         raise check50.Mismatch(error, output)
 
 
