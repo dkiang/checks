@@ -27,8 +27,3 @@ def simple_double():
 def complex():
     """initials.c handles a complex name"""
     check50.run("./initials").stdin("Bobby Jones Junior-Senior").stdout("BJJ\n").exit(0)
-
-@check50.check(compiles)
-def unrealistic():
-    """initials.c handles a unrealistic name name"""
-    check50.run("./initials").stdin("093284n 0983098 e0fdhsi haiyo23yu i8rd8sy 8y2 Io397984").stdout("00ehi8I\n").exit(0)
