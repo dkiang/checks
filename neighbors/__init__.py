@@ -3,7 +3,7 @@ import check50.c
 
 @check50.check()
 def compiles():
-    """Does neighbor.c compile?"""
+    """Does neighbors.c compile?"""
     check50.c.compile("neighbors.c")
 
 @check50.check(compiles)
