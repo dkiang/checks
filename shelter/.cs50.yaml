@@ -14,7 +14,7 @@ check50:
         Total animals adopted after 3 weeks: 39
       exit: 0
         
-    15 animals, 1.5, 6 weeks:
+    Fast Adoption Rate:
     - run: ./shelter
       stdin: 
         - 15
@@ -30,7 +30,7 @@ check50:
         Total animals adopted after 6 weeks: 301
       exit: 0
       
-    Slow adoption rate:
+    Slow Adoption rate:
     - run: ./shelter
       stdin:
         - 25
