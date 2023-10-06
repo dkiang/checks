@@ -1,20 +1,44 @@
 check50:
   checks:
       
-    One minute is 12 bottles:
-    - run: ./water
-      stdin: 1
-      stdout: 12
+    Demo Code:
+    - run: ./shelter
+      stdin:
+        - 10
+        - 1.3
+        - 3
+      stdout: |
+        Week 1: 10 animals adopted
+        Week 2: 13 animals adopted
+        Week 3: 16 animals adopted
+        Total animals adopted after 3 weeks: 39
       exit: 0
         
-    Five minutes is 60 bottles:
-    - run: ./water
-      stdin: 5
-      stdout: 60
+    15 animals, 1.5, 6 weeks:
+    - run: ./shelter
+      stdin: 
+        - 15
+        - 1.5
+        - 6
+      stdout: |
+        Week 1: 15 animals adopted
+        Week 2: 22 animals adopted
+        Week 3: 33 animals adopted
+        Week 4: 49 animals adopted
+        Week 5: 73 animals adopted
+        Week 6: 109 animals adopted
+        Total animals adopted after 6 weeks: 301
       exit: 0
       
-    Ten minutes is 120 bottles:
-    - run: ./water
-      stdin: 10
-      stdout: 120
+    Slow adoption rate:
+    - run: ./shelter
+      stdin:
+        - 25
+        - 1
+        - 3
+      stdout: |
+        Week 1: 25 animals adopted
+        Week 2: 25 animals adopted
+        Week 3: 25 animals adopted
+        Total animals adopted after 3 weeks: 75
       exit: 0
