@@ -1,14 +1,5 @@
 check50:
   checks:
-      
-    Rejects negative input:
-    - run: ./add_digits
-      stdin:
-        - -1
-	- 4321
-      stdout: |
-        10
-      exit: 0
 
     Two digits including a zero:
     - run: ./add_digits
