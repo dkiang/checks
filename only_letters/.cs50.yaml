@@ -1,20 +1,7 @@
 check50:
-  checks:
-      
-    One minute is 12 bottles:
-    - run: ./water
-      stdin: 1
-      stdout: 12
-      exit: 0
-        
-    Five minutes is 60 bottles:
-    - run: ./water
-      stdin: 5
-      stdout: 60
-      exit: 0
-      
-    Ten minutes is 120 bottles:
-    - run: ./water
-      stdin: 10
-      stdout: 120
-      exit: 0
+  files: &check50_files
+    - !exclude "*"
+    - !require only_letters.c
+
+submit50:
+  files: *check50_files
