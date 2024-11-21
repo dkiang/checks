@@ -4,6 +4,6 @@ files: &check50_files
 - !require only_letters.c
 #
 submit50: true
-files: *check50_files
-- !exclude "*"
-- !require only_letters.c
+  files:
+  - !exclude "*"
+  - !include "only_letters.c""
