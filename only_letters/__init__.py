@@ -1,4 +1,5 @@
 import check50
+import check50.c
 
 @check50.check()
 def exists():
@@ -8,7 +9,7 @@ def exists():
 @check50.check(exists)
 def compiles():
   """only_letters.c compiles."""
-  check50.compile("only_letters.c", lcs50=True)
+  check50.c.compile("only_letters.c", lcs50=True)
 
 #@check50.check("compiles")
 #def test1(self):
