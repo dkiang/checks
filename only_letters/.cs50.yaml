@@ -3,5 +3,5 @@ check50: true
 #   - !exclude "*"
 #   - !require only_letters.c
 #
-#submit50:
-# files: *check50_files
+submit50:
+files: *check50_files
