@@ -20,22 +20,22 @@ def test2(self):
   """Checks too many arguments"""
   self.spawn("./only_letters hello world").exit(1)
 		
-@check50("compiles")
+@check50.check("compiles")
 def test3(self):
   """Checks for all letters"""
   self.spawn("./only_letters hello").stdout("Those are all letters.\n").exit(0)
 	
-@check50("compiles")
+@check50.check("compiles")
 def test3(self):
   """Checks for symbols"""
   self.spawn("./only_letters hel-lo").stdout("Those are not all letters.\n").exit(0)
 
-@check50("compiles")
+@check50.check("compiles")
 def test3(self):
   """Checks for numbers"""
   self.spawn("./only_letters hello1").stdout("Those are not all letters.\n").exit(0)
 
-@check50("compiles")
+@check50.check("compiles")
 def test3(self):
   """Checks for single letter"""
   self.spawn("./only_letters a").stdout("Those are all letters.\n").exit(0)
