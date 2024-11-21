@@ -11,16 +11,16 @@ def compiles():
   """only_letters.c compiles."""
   check50.c.compile("only_letters.c", lcs50=True)
 
-#@check50.check("compiles")
-#def test1(self):
-# """Checks lack of arguments"""
-# self.spawn("./only_letters").exit(1)
-#		
-#@check50.check("noargs")
-#def test2(self):
-# """Checks too many arguments"""
-# self.spawn("./only_letters hello world").exit(1)
-#		
+  @check50.check("compiles")
+  def test1(self):
+    """Checks lack of arguments"""
+  self.spawn("./only_letters").exit(1)
+  
+  @check50.check("noargs")
+  def test2(self):
+    """Checks too many arguments"""
+  self.spawn("./only_letters hello world").exit(1)
+  
 #@check50.check("xsargs")
 #def test3(self):
 # """Checks for all letters"""
