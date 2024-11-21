@@ -1,5 +1,10 @@
-check50: true
-  files: &check50_files
+check50:
+  checks:
+    
+
+
+
+files: &check50_files
     - !exclude "*"
     - !include "only_letters.c"
 
