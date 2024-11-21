@@ -1,9 +1,9 @@
 check50: true
-  files: 
-    - !exclude "*"
-    - !include "only_letters.c"
-
-submit50: true
-  files:
-    - !exclude "*"
-    - !include "only_letters.c"
+# files: 
+#   - !exclude "*"
+#   - !include "only_letters.c"
+#
+#submit50: true
+# files:
+#   - !exclude "*"
+#   - !include "only_letters.c"
