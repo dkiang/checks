@@ -37,6 +37,6 @@ def greater_shift():
   check50.run("./caesar_shift A 27").stdout("Shifted: B\n").exit(0)
   
 @check50.check(compiles)
-def greater_shift():
+def even_greater_shift():
   """Checks for really large value for key"""
   check50.run("./caesar_shift N 65").stdout("Shifted: A\n").exit(0)
