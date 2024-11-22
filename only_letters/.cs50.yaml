@@ -1,12 +1,7 @@
 check50:
-  checks:
-    
-
-
-
-files: &check50_files
+  files: &check50_files
     - !exclude "*"
-    - !include "only_letters.c"
-
-submit50: true
+    - !require only_letters.c
+    
+submit50:
   files: *check50_files
